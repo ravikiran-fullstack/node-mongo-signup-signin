@@ -66,7 +66,10 @@ app.post('/sign_up', async (req, res) => {
       
       const result = await registerUser.save();
       console.log('result --------- ',result);
-      return res.status(200).json(req.body.username);
+      res.set({
+        'Access-Control-Allow-Origin' : '*'
+      });
+      return res.json({redirectTo: 'http://localhost:6200/public/signin.html'});
     }
   }
 });
